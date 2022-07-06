@@ -1,0 +1,50 @@
+name: terraform-deployment
+on:
+  pull_request:
+    branches:
+      - main
+    #types: [ closed ]
+env:
+  AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+#       - name: Install SSH Keys
+#         run: |
+#           mkdir ~/.ssh
+#           echo "${{ secrets.INNERSOURCE_IAC_KEY }}" >> ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+
+      - name: SetUp Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform-version: 1.2.4
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform initialization
+        id: init
+        run: terraform init -input=false
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -refresh=false
+        continue-on-error: true
+
+      - name: Terraform apply
+        id: apply
+        run: terraform apply --auto-approve -refresh=false
