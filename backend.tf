@@ -1,12 +1,12 @@
 # Configure backend
 
-# terraform {
-#   backend "s3" {
-#     bucket = "my-s3-bucket-sridhar"
-#     key    = "test/migration.tfstate"
-#     region = "us-east-1"
-#   }
-# }
+terraform {
+  backend "s3" {
+    bucket = "my-s3-bucket-sridhar"
+    key    = "test/migration1.tfstate"
+    region = "us-east-1"
+  }
+}
 
 
 # terraform {
@@ -22,12 +22,12 @@
 # }
 
 
-terraform {
-  cloud {
-    organization = "rsr"
+# terraform {
+#   cloud {
+#     organization = "rsr"
 
-    workspaces {
-      name = "test-integration"
-    }
-  }
-}
+#     workspaces {
+#       name = "test-integration"
+#     }
+#   }
+# }
