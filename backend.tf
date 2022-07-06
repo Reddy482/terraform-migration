@@ -17,5 +17,6 @@ terraform {
     workspaces {
       name = "terraform-migration"
     }
+    token = "2hG5GbISLXEGyQ.atlasv1.GIqhk2EcQuYyIIQKM7KE7f1py0oqJrc2CZ9HbNY5H3ENnWMPIUZBOHKnQvW0zrE8D70"
   }
 }
