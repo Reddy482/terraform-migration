@@ -2,7 +2,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "test-migration-to-tfe"
+    bucket = "my-s3-bucket-sridhar"
     key    = "test/migration.tfstate"
     region = "us-east-1"
   }
