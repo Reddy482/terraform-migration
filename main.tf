@@ -1,8 +1,6 @@
-
-resource "github_team" "some_team" {
-  name        = "test"
-  description = "Some cool team"
-  create_default_maintainer = true
-}
+resource "github_repository" "main" {
+  name        = "repo-from-tfe"
+  description = "My awesome codebase"
+  visibility = "public"
 
 
