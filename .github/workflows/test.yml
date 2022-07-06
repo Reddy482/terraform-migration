@@ -26,7 +26,7 @@ jobs:
       - name: SetUp Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform-version: 1.2.4
+          terraform_version: 1.2.4
           cli_config_credentials_token: ${{ secrets.TFC_TOKEN }}
 
       - name: Terraform Format
@@ -38,15 +38,15 @@ jobs:
         id: init
         run: terraform init -input=false
 
-#       - name: Terraform Validate
-#         id: validate
-#         run: terraform validate -no-color
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
 
-#       - name: Terraform Plan
-#         id: plan
-#         run: terraform plan -refresh=true
-#         continue-on-error: true
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -refresh=true
+        continue-on-error: true
 
-#       - name: Terraform apply
-#         id: apply
-#         run: terraform apply --auto-approve -refresh=true
+      - name: Terraform apply
+        id: apply
+        run: terraform apply --auto-approve -refresh=true
