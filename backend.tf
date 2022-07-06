@@ -8,6 +8,7 @@ terraform {
   }
 }
 
+provider "github" {}
 
 # terraform {
 #   backend "remote" {
