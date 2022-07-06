@@ -12,6 +12,16 @@ provider "github" {
   token = "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"
 }
 
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
+  }
+}
+
+
 # terraform {
 #   backend "remote" {
 #     hostname = "app.terraform.io"
